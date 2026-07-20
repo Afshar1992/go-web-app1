@@ -33,16 +33,17 @@ jobs:
       run: go test ./...
   
   code-quality:
-    runs-on: ubuntu-latest
+  runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+  steps:
+  - name: Checkout repository
+    uses: actions/checkout@v4
 
-    - name: Run golangci-lint
-      uses: golangci/golangci-lint-action@v6
-      with:
-        version: v1.56.2
+  - name: Run golangci-lint
+    uses: golangci/golangci-lint-action@v6
+    with:
+      version: v1.56.2
+      args: --verbose  # ← ADD THIS LINE TO SEE ERRORS
   
   push:
     runs-on: ubuntu-latest
