@@ -32,18 +32,18 @@ jobs:
     - name: Test
       run: go test ./...
   
-  code-quality:
-  runs-on: ubuntu-latest
+  code-quality:                 # ← No indentation (correct)
+    runs-on: ubuntu-latest      # ← INDENTED with 2 spaces
 
-  steps:
-  - name: Checkout repository
-    uses: actions/checkout@v4
+    steps:                      # ← INDENTED with 2 spaces
+    - name: Checkout repository # ← INDENTED with 2 spaces
+      uses: actions/checkout@v4
 
-  - name: Run golangci-lint
-    uses: golangci/golangci-lint-action@v6
-    with:
-      version: v1.56.2
-      args: --verbose  # ← ADD THIS LINE TO SEE ERRORS
+    - name: Run golangci-lint    # ← INDENTED with 2 spaces
+      uses: golangci/golangci-lint-action@v6
+      with:
+        version: v1.56.2
+        args: --verbose
   
   push:
     runs-on: ubuntu-latest
@@ -80,11 +80,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
-        token: ${{ secrets.TOKEN }}  # ← FIX 1: Changed from TOKEN to GITHUB_TOKEN
+        token: ${{ secrets.TOKEN }}
 
     - name: Update tag in Helm chart
       run: |
-        sed -i 's/tag: .*/tag: "${{github.run_id}}"/' helm/go-web-app-chart/values.yaml  # ← FIX 2: Fixed path
+        sed -i 's/tag: .*/tag: "${{github.run_id}}"/' helm/go-web-app-chart/values.yaml
 
     - name: Commit and push changes
       run: |
