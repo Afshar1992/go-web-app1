@@ -22,4 +22,9 @@ go.work
 go.work.sum
 
 # cluster file
-*.cluster.yaml
+*.cluster.yamlgo1.22.0-linux-amd64.tar.gz
+go-web-app
+go-web-app1
+*.tar.gz
+cluster.yaml
+ingress-nginx.yaml
