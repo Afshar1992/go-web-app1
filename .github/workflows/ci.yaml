@@ -35,18 +35,22 @@ jobs:
     - name: Test
       run: go test ./...
   
-  code-quality:                 # ← No indentation (correct)
-    runs-on: ubuntu-latest      # ← INDENTED with 2 spaces
+  code-quality:
+    runs-on: ubuntu-latest
 
-    steps:                      # ← INDENTED with 2 spaces
-    - name: Checkout repository # ← INDENTED with 2 spaces
+    steps:
+    - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Run golangci-lint    # ← INDENTED with 2 spaces
+    - name: Set up Go 1.22
+      uses: actions/setup-go@v4
+      with:
+        go-version: 1.22
+
+    - name: Run golangci-lint
       uses: golangci/golangci-lint-action@v6
       with:
-        version: v1.56.2
-        #args: --verbose
+        version: latest
   
   push:
     runs-on: ubuntu-latest
